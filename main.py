@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 
-# Load and prepare data minimally
+# Load data
 df = pd.read_csv('Crop_recommendation.csv')
 X = df.drop('label', axis=1)
 y = df['label']
@@ -19,7 +19,6 @@ rf_classifier = RandomForestClassifier(n_estimators=50, random_state=42)
 rf_classifier.fit(X_train_scaled, y_train)
 
 app = Flask(__name__)
-app.config['TEMPLATES_AUTO_RELOAD'] = True  # Corrected configuration
 
 @app.route('/')
 def index():
